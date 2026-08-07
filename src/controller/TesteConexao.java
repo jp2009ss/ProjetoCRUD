@@ -1,11 +1,14 @@
 package controller;
 
 import dao.UsuarioDao;
+import model.UsuarioModel;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import model.UsuarioModel;
+
 
 public class TesteConexao {
     public static void main(String[] args)throws SQLException{
@@ -15,18 +18,39 @@ public class TesteConexao {
         connection.close();
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //TESTEEE
-        UsuarioModel u = new UsuarioModel();
+        UsuarioModel u1 = new UsuarioModel();
         UsuarioDao ud = new UsuarioDao(connection);
         
-        u.setNome("Felizberto");
-        u.setCpf("333.444.555-66");
-        u.setEmail("feliz@hotmail.com");
-        u.setTelefone("(34)94445454545");
-        u.setNascimento(Date.valueOf("2026-08-06"));
+        u1.setNome("Felizberto");
+        u1.setCpf("333.444.555-66");
+        u1.setEmail("infeliz@hotmail.com");
+        u1.setTelefone("(34)94445454545");
+        u1.setNascimento(Date.valueOf("2026-08-06"));
+        ud.adicionar(u1);
         
-        ud.adicionar(u);
-
+        
+        /* Teste de formatação de dados
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate data = LocalDate.parse(txNascimento.getText(), formato);
+        u.setNascimento(Date.valueOf(data));
+        */
   
             
     }
