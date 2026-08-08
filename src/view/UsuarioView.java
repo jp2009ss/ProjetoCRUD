@@ -1,25 +1,30 @@
 package view;
-        
+
+import dao.UsuarioDao;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import model.UsuarioModel;
+import util.Format;
+
 
 public class UsuarioView extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UsuarioView.class.getName());
+
     public UsuarioView() {
         initComponents();
     }
-    
-    public void limpar(){
+
+    private Connection connection;
+
+    public void limpar() {
         txfNome.setText("");
         txfCpf.setText("");
         txfEmail.setText("");
         txfTel.setText("");
         txfNascimento.setText("");
     }
-    
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -157,17 +162,18 @@ public class UsuarioView extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txfNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txfNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(this::jbCadastrarActionPerformed);
 
         jbAtualizar.setText("Atualizar");
 
@@ -253,6 +259,33 @@ public class UsuarioView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Obrigado pelo acesso!");
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        UsuarioModel u = new UsuarioModel();
+        
+        try {
+            u.setNome(txfNome.getText());
+            u.setCpf(txfCpf.getText());
+            u.setEmail(txfEmail.getText());
+            u.setTelefone(txfTel.getText());
+            u.setNascimento(Format.converterParaSqlDate(txfNascimento.getText()));
+            
+            UsuarioDao dao = new UsuarioDao(connection);
+            dao.adicionar(u);
+            
+            JOptionPane.showMessageDialog(null, 
+                    "Usuário "+txfNome.getText()+
+                            " cadastrado com sucesso!");
+            
+            limpar();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro ao cadastrar Usuário. Botão-View");
+            throw new RuntimeException(e);
+        }
+        
+        
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
     public static void main(String args[]) {
         try {

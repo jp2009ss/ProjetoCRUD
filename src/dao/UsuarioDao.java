@@ -29,11 +29,10 @@ public class UsuarioDao {
             ps.execute();
             ps.close();
             
-            JOptionPane.showMessageDialog(null, "Usuário Cadastrado!");
-            
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar! ERRO DAO "
+                    + "Classe UsuarioDAO");
             throw new RuntimeException(e);
         }
         

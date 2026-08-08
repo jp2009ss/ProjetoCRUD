@@ -17,32 +17,15 @@ public class TesteConexao {
         JOptionPane.showMessageDialog(null, "Conexão Estabelecida!");
         connection.close();
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         //TESTEEE
         UsuarioModel u1 = new UsuarioModel();
         UsuarioDao ud = new UsuarioDao(connection);
         
-        u1.setNome("Felizberto");
-        u1.setCpf("333.444.555-66");
-        u1.setEmail("infeliz@hotmail.com");
-        u1.setTelefone("(34)94445454545");
-        u1.setNascimento(Date.valueOf("2026-08-06"));
+        u1.setNome("Abilynna");
+        u1.setCpf("222.444.555.11");
+        u1.setEmail("abi@yahoo.com");
+        u1.setTelefone("(34)9333-4433");
+        u1.setNascimento(Date.valueOf("2000-03-02"));
         ud.adicionar(u1);
         
         
