@@ -65,7 +65,7 @@ public class UsuarioDao {
                 usuarioArray.add(u);
             }
             
-            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
+//            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro Listar DAO");

@@ -7,7 +7,6 @@ import javax.swing.table.DefaultTableModel;
 import model.UsuarioModel;
 import util.Format;
 
-
 public class UsuarioView extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UsuarioView.class.getName());
@@ -26,14 +25,14 @@ public class UsuarioView extends javax.swing.JFrame {
         txfTel.setText("");
         txfNascimento.setText("");
     }
-    
-    public void leiaTable(){
-        DefaultTableModel modelo = (DefaultTableModel)jtUsuario.getModel();
+
+    public void leiaTable() {
+        DefaultTableModel modelo = (DefaultTableModel) jtUsuario.getModel();
         modelo.setNumRows(0);
-        
+
         UsuarioDao dao = new UsuarioDao(connection);
-        
-        for(UsuarioModel usario: dao.leitura()){
+
+        for (UsuarioModel usario : dao.leitura()) {
             modelo.addRow(new Object[]{
                 usario.getIdUsuario(),
                 usario.getNome(),
@@ -43,12 +42,8 @@ public class UsuarioView extends javax.swing.JFrame {
                 usario.getNascimento()
             });
         }
-        
-        
-        
+
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -333,30 +328,61 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         UsuarioModel u = new UsuarioModel();
-        
+
         try {
+
+            //Valida o campo nome
+            if (Format.temNumero(txfNome.getText())) {
+                JOptionPane.showMessageDialog(null, "O campo nome não pode conter números!");
+                return;
+            }
+
+            //Verifica se campos não estão vazios
+            if (txfNome.getText().trim().isEmpty()
+                    || txfCpf.getText().trim().isEmpty()
+                    || txfEmail.getText().trim().isEmpty()
+                    || txfTel.getText().trim().isEmpty()
+                    || txfNascimento.getText().trim().isEmpty()) {
+
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+
+                return;
+            }
+
+            //Valida o campo Email
+            if (!Format.emailValido(txfEmail.getText())) {
+                JOptionPane.showMessageDialog(null, "E-mail inválido!");
+                return;
+            }
+
+            //Valida o campo CPF
+            if (!Format.cpfValido(txfCpf.getText())) {
+                JOptionPane.showMessageDialog(null, "CPF inválido!");
+                return;
+            }
+
             u.setNome(txfNome.getText());
             u.setCpf(txfCpf.getText());
             u.setEmail(txfEmail.getText());
             u.setTelefone(txfTel.getText());
             u.setNascimento(Format.converterParaSqlDate(txfNascimento.getText()));
-            
+
             UsuarioDao dao = new UsuarioDao(connection);
             dao.adicionar(u);
-            
-            JOptionPane.showMessageDialog(null, 
-                    "Usuário "+txfNome.getText()+
-                            " cadastrado com sucesso!");
-            
+
+            JOptionPane.showMessageDialog(null,
+                    "Usuário " + txfNome.getText()
+                    + " cadastrado com sucesso!");
+
             limpar();
             leiaTable();
-            
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Erro ao cadastrar Usuário. Botão-View");
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar Usuário. Botão-View");
             throw new RuntimeException(e);
         }
-        
-        
+
+
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     public static void main(String args[]) {
