@@ -4,6 +4,8 @@ import controller.ConnectionMySql;
 import model.UsuarioModel;
 import java.sql.Connection;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class UsuarioDao {
@@ -35,8 +37,40 @@ public class UsuarioDao {
                     + "Classe UsuarioDAO");
             throw new RuntimeException(e);
         }
-        
-
     }
+    
+    public List<UsuarioModel> leitura(){
+        connection = new ConnectionMySql().getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        List<UsuarioModel> usuarioArray = new ArrayList<>();
+        
+        try {
+            ps = connection.prepareStatement(
+            "SELECT * FROM usuario");
+            
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                UsuarioModel u = new UsuarioModel();
+                
+                u.setIdUsuario  (rs.getInt      ("idUsuario"));
+                u.setNome       (rs.getString   ("nome"));
+                u.setCpf        (rs.getString   ("cpf"));
+                u.setEmail      (rs.getString   ("email"));
+                u.setTelefone   (rs.getString   ("telefone"));
+                u.setNascimento (rs.getDate     ("nascimento"));
+                
+                usuarioArray.add(u);
+            }
+            
+            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
 
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro Listar DAO");
+            throw new RuntimeException(e);
+        }
+        return usuarioArray;
+    }
 }
