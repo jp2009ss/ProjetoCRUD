@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class UsuarioDao {
 
@@ -17,7 +18,7 @@ public class UsuarioDao {
     }
 
     public void adicionar(UsuarioModel usuario) {
-        String sql = "INSERT INTO usuario(nome,cpf,email,telefone,nascimento)VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO usuário(nome,cpf,email,telefone,nascimento)VALUES(?,?,?,?,?)";
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -48,7 +49,7 @@ public class UsuarioDao {
         
         try {
             ps = connection.prepareStatement(
-            "SELECT * FROM usuario");
+            "SELECT * FROM usuário");
             
             rs = ps.executeQuery();
             
@@ -65,7 +66,7 @@ public class UsuarioDao {
                 usuarioArray.add(u);
             }
             
-//            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
+            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro Listar DAO");
