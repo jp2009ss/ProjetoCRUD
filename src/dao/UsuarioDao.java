@@ -34,8 +34,8 @@ public class UsuarioDao {
             
             
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar! ERRO DAO "
-                    + "Classe UsuarioDAO");
+//            JOptionPane.showMessageDialog(null, "Erro ao cadastrar! ERRO DAO "
+//                    + "Classe UsuarioDAO");
             throw new RuntimeException(e);
         }
     }
@@ -66,12 +66,30 @@ public class UsuarioDao {
                 usuarioArray.add(u);
             }
             
-            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
+//            JOptionPane.showMessageDialog(null, "Lista DAO Funcionou");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,"Erro Listar DAO");
             throw new RuntimeException(e);
         }
         return usuarioArray;
+    }
+    
+    public void deletar(UsuarioModel usuario){
+                String sql = "DELETE FROM usuário WHERE idUsuario = ?";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+                    
+            ps.setInt(1, usuario.getIdUsuario());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Deu Bom");
+            ps.close();
+            
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, "Deu Ruim - Classe DAO");
+             throw new RuntimeException(e);
+        }
     }
 }

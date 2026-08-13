@@ -5,24 +5,23 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Format {
-    
-    public static Date converterParaSqlDate(String dataTexto){
+
+    public static Date converterParaSqlDate(String dataTexto) {
         //Define o formato recebido
         DateTimeFormatter formatoBrasil = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
+
         //Converte String para LocalDate
         LocalDate data = LocalDate.parse(dataTexto, formatoBrasil);
-        
+
         //Converte LocalDate para Date/SQL
         return Date.valueOf(data);
     }
-    
-    
+
     // Verifica se o texto possui algum número
     public static boolean temNumero(String texto) {
         return texto.matches(".*\\d.*");
     }
-    
+
     // VALIDAR E-MAIL
     public static boolean emailValido(String email) {
 
@@ -30,7 +29,6 @@ public class Format {
         // texto@texto.extensao
         return email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$");
     }
-
 
     // VALIDAR CPF
     public static boolean cpfValido(String cpf) {
@@ -78,7 +76,10 @@ public class Format {
         return digito1 == Character.getNumericValue(cpf.charAt(9))
                 && digito2 == Character.getNumericValue(cpf.charAt(10));
     }
+
+    public static String dateParaString(String data) {
+        LocalDate dataConvertida = LocalDate.parse(data); // Converte o texto do banco para uma data
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");// Define o formato brasileiro
+        return dataConvertida.format(formato);    // Retorna a data formatada
+    }
 }
-
-    
-

@@ -19,6 +19,8 @@ public class UsuarioView extends javax.swing.JFrame {
     private Connection connection;
 
     public void limpar() {
+        txfID
+                .setText("");
         txfNome.setText("");
         txfCpf.setText("");
         txfEmail.setText("");
@@ -52,7 +54,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txfID = new javax.swing.JLabel();
+        laibouuuu = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -63,7 +65,7 @@ public class UsuarioView extends javax.swing.JFrame {
         txfNascimento = new javax.swing.JFormattedTextField();
         txfTel = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        txfNome1 = new javax.swing.JTextField();
+        txfID = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jbCadastrar = new javax.swing.JButton();
         jbAtualizar = new javax.swing.JButton();
@@ -100,8 +102,8 @@ public class UsuarioView extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txfID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txfID.setText("Id");
+        laibouuuu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        laibouuuu.setText("Id");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Cpf:");
@@ -115,7 +117,6 @@ public class UsuarioView extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Tel.:");
 
-        txfNome.setEditable(false);
         txfNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txfNome.addActionListener(this::txfNomeActionPerformed);
 
@@ -146,8 +147,9 @@ public class UsuarioView extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nome:");
 
-        txfNome1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txfNome1.addActionListener(this::txfNome1ActionPerformed);
+        txfID.setEditable(false);
+        txfID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txfID.addActionListener(this::txfIDActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,26 +161,27 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txfID, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(laibouuuu, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(txfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txfNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txfID, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,19 +196,21 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txfID)
-                            .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(laibouuuu)
+                            .addComponent(txfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txfNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(txfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
-                                .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txfCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel6)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txfTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -225,6 +230,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jbAtualizar.setText("Atualizar");
 
         jbExcluir.setText("Excluir");
+        jbExcluir.addActionListener(this::jbExcluirActionPerformed);
 
         jbLimpar.setText("Limpar");
         jbLimpar.addActionListener(this::jbLimparActionPerformed);
@@ -286,6 +292,11 @@ public class UsuarioView extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtUsuarioMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jtUsuario);
@@ -415,23 +426,32 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+
+        
+    }//GEN-LAST:event_jPanel4MouseClicked
+
+    private void txfIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfIDActionPerformed
        
+    }//GEN-LAST:event_txfIDActionPerformed
+
+    private void jtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMouseClicked
         if(jtUsuario.getSelectedRow() != -1){
         
-             txfID.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 0).toString());
+            txfID.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 0).toString());
             txfNome.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 1).toString());
             txfCpf.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 2).toString());
             txfEmail.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 3).toString());
             txfTel.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 4).toString());
-            //txfNascimento.setText(jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 5).toString());
+            txfNascimento.setText(Format.dateParaString(jtUsuario.getValueAt(jtUsuario.getSelectedRow(),5).toString()));
             
     }
-        
-    }//GEN-LAST:event_jPanel4MouseClicked
+    }//GEN-LAST:event_jtUsuarioMouseClicked
 
-    private void txfNome1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNome1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfNome1ActionPerformed
+    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
+        
+
+        
+    }//GEN-LAST:event_jbExcluirActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -464,12 +484,12 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton jbLimpar;
     private javax.swing.JButton jbSair;
     private javax.swing.JTable jtUsuario;
+    private javax.swing.JLabel laibouuuu;
     private javax.swing.JFormattedTextField txfCpf;
     private javax.swing.JTextField txfEmail;
-    private javax.swing.JLabel txfID;
+    private javax.swing.JTextField txfID;
     private javax.swing.JFormattedTextField txfNascimento;
     private javax.swing.JTextField txfNome;
-    private javax.swing.JTextField txfNome1;
     private javax.swing.JFormattedTextField txfTel;
     // End of variables declaration//GEN-END:variables
 }
