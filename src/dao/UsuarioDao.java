@@ -92,4 +92,29 @@ public class UsuarioDao {
              throw new RuntimeException(e);
         }
     }
+    
+     public void atualizar(UsuarioModel usuario) {
+        String sql = "UPDATE usuário SET nome = ?, cpf = ?, email ?, telefone = ?, nascimento = ? WHERE idUsuario = ?";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            
+            ps.setString(1, usuario.getNome());
+            ps.setString(2, usuario.getCpf());
+            ps.setString(3, usuario.getEmail());
+            ps.setString(4, usuario.getTelefone());
+            ps.setDate  (5, usuario.getNascimento());
+             ps.setInt(6, usuario.getIdUsuario());
+            
+            ps.execute();
+            ps.close();
+            
+            
+        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(null, "Erro ao cadastrar! ERRO DAO "
+//                    + "Classe UsuarioDAO");
+            throw new RuntimeException(e);
+        }
+    }
+    
 }

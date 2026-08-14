@@ -228,6 +228,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jbCadastrar.addActionListener(this::jbCadastrarActionPerformed);
 
         jbAtualizar.setText("Atualizar");
+        jbAtualizar.addActionListener(this::jbAtualizarActionPerformed);
 
         jbExcluir.setText("Excluir");
         jbExcluir.addActionListener(this::jbExcluirActionPerformed);
@@ -449,9 +450,48 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         
-
+        if(jtUsuario.getSelectedRow()!= -1){
+            
+        UsuarioModel u = new UsuarioModel();
+        u.setIdUsuario((int)jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 0));
+        
+        UsuarioDao dao = new UsuarioDao(connection);
+        dao.deletar(u);
+        
+        JOptionPane.showMessageDialog(null, "Usuario excluido com sucesso");
+        
+        limpar();
+        leiaTable();
+        }else{
+                JOptionPane.showMessageDialog(null, "Selecione um usuario");
+                }
+        
+        
         
     }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
+        if(jtUsuario.getSelectedRow()!= -1){
+            UsuarioModel u = new UsuarioModel();
+            
+            u.setNome(txfNome.getText());
+            u.setCpf(txfCpf.getText());
+            u.setEmail(txfEmail.getText());
+            u.setTelefone(txfTel.getText());
+            u.setNascimento(Format.converterParaSqlDate(txfNascimento.getText()));
+            
+            u.setIdUsuario((int)jtUsuario.getValueAt(jtUsuario.getSelectedRow(), 0));
+            
+        UsuarioDao dao = new UsuarioDao(connection);
+        dao.atualizar(u);
+        
+        JOptionPane.showMessageDialog(null, "Usuario atualizado com sucesso");
+        
+        limpar();
+        leiaTable();
+        
+        }
+    }//GEN-LAST:event_jbAtualizarActionPerformed
 
     public static void main(String args[]) {
         try {
